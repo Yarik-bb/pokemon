@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Finder</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="content">
+        <form class="form-inline search-form js-search-form"> 
+            <div class="form-group"> 
+                <input type="text" class="form-control" name="query" placeholder="Введіть ім'я покемона" /> 
+            </div> 
+            <button type="submit" class="btn btn-primary">Шукати</button> 
+        </form> 
+        <div class="js-card-container"></div>
+        <audio id="pokemon-audio" src="./pokemon-sound.mp3" preload="auto"></audio>
+    </div>
+    <div id="gif-container" class="gif-container" hidden>
+        <img src="./pokemon.gif" alt="Pokemon Animation">
+    </div>
+    <script id="pokemon-template" type="text/x-handlebars-template">
+        <div class="card">
+            <div class="card-img-top">
+                <img src="{{sprites.front_default}}" alt="{{name}}">
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">Name: {{name}}</h2>
+                <p class="card-text">Weight: {{weight}}</p>
+                <p class="card-text">Height: {{height}}</p>
+                <p class="card-text"><b>Abilities:</b></p>
+                <ul class="list-group">
+                    {{#each abilities}}
+                        <li class="list-group-item">{{ability.name}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
